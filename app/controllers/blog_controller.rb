@@ -218,7 +218,7 @@ class BlogController < ApplicationController
 
   private
 
-  # This sucks, but I don't know why! Fuck!
+  # Refactor this.
   def login_timeout
     unless session[:user_id].nil?
       time = Time.now
