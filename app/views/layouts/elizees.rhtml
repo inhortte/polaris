@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Image muddle thwack blueberry</title>
+  <%= stylesheet_link_tag 'blog' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+
+  <div id="banner">
+    <%= link_to image_tag(get_banner), :action => 'index' %>
+  </div>
+  <div id="sheep">
+
+  </div>
+  </div>
+  <div class="clear"></div>
+
+  <div id="maincontent">
+    <div id="leftcontent">
+      <%= render :partial => 'out_links' %>
+
+      <hr class="clear" />
+ 
+      <div id="login">
+      <% if get_user %>
+        Welcome, <strong><%= get_user.login %></strong>!
+      <% else %>
+        You don't seem to be logged in!
+      <% end %>
+      </div>
+
+      <hr class="clear" />
+
+      <% if is_admin? || at_root? || own_parent? %>
+        <div class="new-photoalbum">
+	  <%= link_to 'Upload Image', new_elizee_path %>
+        </div>
+	<br class="clear" />
+        <div class="new-photoalbum">
+	  <%= link_to 'Back to <em>' + Photoalbum.find(session[:pa_parent]).name + '</em>', 
+                      photoalbum_path(session[:pa_parent]) %>
+        </div>
+	<br class="clear" />
+      <% end %>
+    </div>
+
+    <div id="rightcontent">
+      <%= render :partial => 'top_links' %>
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <%= yield  %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>

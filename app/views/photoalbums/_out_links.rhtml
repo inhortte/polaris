@@ -1,0 +1,9 @@
+<div id="out-links">
+  <% if is_admin? %>
+    <%= link_to 'admin', :controller => 'login', :class => "link" %> |
+  <% end %>
+  <% if get_user %>
+    <%= link_to 'haiku', :controller => 'haikus', :class => "link" %> |
+  <% end %>
+  <%= link_to 'blog', :controller => 'blog', :class => 'link' %>
+</div>

@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>The fucksheep.org blog</title>
+  <%= stylesheet_link_tag 'blog' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+
+  <div id="banner">
+    <%= link_to image_tag(get_banner), :action => 'index' %>
+  </div>
+  <div id="sheep">
+
+  </div>
+  </div>
+  <div class="clear"></div>
+
+  <div id="maincontent">
+    <div id="leftcontent">
+      <div id="login">
+      <% if get_user %>
+        Welcome, <strong><%= get_user.login %></strong>!
+      <% else %>
+        You don't seem to be logged in!
+      <% end %>
+      </div>
+
+      <hr class="clear" />
+ 
+      <div id="login-menu">
+        <% unless get_user %>
+          <%= link_to 'login', :action => 'login' %><br />
+          <%= link_to 'signup', :action => 'signup' %><br />
+        <% else %>
+          <%= link_to 'logout', :action => 'logout' %><br />
+        <% end %>
+        <% if is_admin? %>
+          <%= link_to 'add user', :action => 'add_user' %><br />
+          <%= link_to 'list users', :action => 'list_users' %><br />
+          <%= link_to 'generate signup code', :action => 'generate_signup_code' %><br />
+        <% end %>
+      </div>
+    </div>
+    <div id="rightcontent">
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <%= yield  %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+if session[:show_new_comment]
+  page[:add_comment].visual_effect :blind_down
+else
+  page[:add_comment].visual_effect :blind_up
+end

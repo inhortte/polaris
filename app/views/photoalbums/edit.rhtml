@@ -1,0 +1,28 @@
+<%= error_messages_for :photoalbum %>
+
+<p>
+  <b>User</b><br />
+  <%= get_user.login %>
+</p>
+<p>
+  <b>Parent</b><br />
+  <%= parent_name %>
+</p>
+<% form_for(:photoalbum, 
+    :url => photoalbum_path(@photoalbum),
+    :html => { :method => :put }) do |f| %>
+  <%= f.hidden_field :user_id, :value => get_user.id %>
+  <%= f.hidden_field :parent_id, :value => session[:pa_parent] %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name, :size => 20 %>
+  </p>
+
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<div class="back">
+  <%= link_to 'Back', haikus_path %>
+</div>

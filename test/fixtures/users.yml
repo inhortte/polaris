@@ -1,0 +1,32 @@
+# == Schema Information
+# Schema version: 13
+#
+# Table name: users
+#
+#  id         :integer(11)   not null, primary key
+#  login      :string(255)   
+#  password   :string(255)   
+#  name       :string(255)   
+#  email      :string(255)   
+#  created_at :datetime      
+#  updated_at :datetime      
+#  last_login :datetime      
+#  admin_flag :integer(11)   default(0), not null
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+bob:
+  id: 1000001
+  login: bob
+  password: 9a91e1d8d95b6315991a88121bb0aa9f03ba0dfc # test
+  
+existingbob:
+  id: 1000002
+  login: existingbob
+  password: 9a91e1d8d95b6315991a88121bb0aa9f03ba0dfc # test
+  
+longbob:
+  id: 1000003
+  login: longbob
+  password: 8e9b1a9a38e66ca572a5e8fdac8e256848842dfa # longtest

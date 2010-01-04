@@ -1,0 +1,21 @@
+<a anchor="haiku<%= haiku.id %>"></a>
+<div id="haiku<%= haiku.id %>">
+  <div class="haiku-header">
+    <div class="date"><%= format_date(haiku.created_at) %></div>
+    <div class="user"> by <%= get_user(haiku.user_id).login %></div>
+    <div class="haiku-actions">
+      <% if is_admin? || is_current_user?(haiku.user_id) %>
+        <%= link_to 'delete', haiku_path(haiku), :confirm => 'You sure?', :method => :delete %>&nbsp;
+        <%= link_to 'edit', edit_haiku_path(haiku) %>&nbsp;
+        <span id="acceptable<%= haiku.id %>">
+          <%= render :partial => 'acceptable', :locals => { :haiku => haiku } %>
+        </span>
+        (<%= link_to_remote 'toggle', :url => toggle_haiku_url(haiku.id) %>)
+      <% end %>
+    </div>
+  </div>
+  <div class="haiku">
+    <%= haikuify(haiku.haiku) %>
+  </div>
+</div>
+

@@ -1,0 +1,46 @@
+<div id="entry<%= entry.id %>">
+  <div class="entry-content">
+    <div class="date"><%= format_date(entry.created_at) %></div>
+    <div class="user">by 
+      <%= link_to get_user(entry.user_id).login,
+                  :action => :user, :id => entry.user_id %>
+    </div>
+    <div class="topic">
+      <%= pluralize(entry.topics.length, 'Topic').gsub(/\d+\s+/,'') %>:
+      <%= entry.topics.empty? ? 'none' : entry_topics(entry.topics) %>
+    </div>
+    <div class="subject">
+      <%= h(entry.subject) %>
+      <span class="comments">
+        (<%= link_to pluralize(entry.comments.length, 'comment'),
+                     :action => :comment, :id => entry.id %>)
+      </span>
+    </div>
+    <div class="entry">
+      <% if show_entry?(entry.id) %>
+        <%= paragraphify(entry.entry) %>
+      <% else %>
+        <%= remove_tags(entry.entry).slice(0..100) %>
+        [<%= link_to_remote 'more', :url => { :action => 'show', :id => entry } %>]
+      <% end %>
+    </div>
+    <div class="mood">Mood: <%= get_mood(entry.mood_id).mood %></div>
+    <div class="music">Music: <%= entry.music %></div>
+  </div>
+  <div class="entry-actions">
+    <% if is_admin? || is_current_user?(entry.user_id) %>
+      <%= button_to 'delete', { :action => 'destroy', :id => entry },
+                              :confirm => 'Really?' %>
+      <%= button_to 'edit', :action => 'edit', :id => entry %>
+    <% end %>
+    <% if show_entry?(entry.id) %>
+      <%= form_remote_tag(:url => { :action => 'collapse', :id => entry }) %>
+        <%= submit_tag 'collapse', :class => 'submit-link' %>
+      <%= end_form_tag %>
+    <% else %>
+      <%= form_remote_tag(:url => { :action => 'show', :id => entry }) %>
+        <%= submit_tag 'show', :class => 'submit-link' %>
+      <%= end_form_tag %>
+    <% end %>
+  </div>
+</div>

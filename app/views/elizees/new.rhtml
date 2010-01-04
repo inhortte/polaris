@@ -1,0 +1,30 @@
+<%= error_messages_for :elizee %>
+
+<p>
+  <b>User</b><br />
+  <%= get_user.login %>
+</p>
+<%= observe_field 'file_upload',
+		  :update => 'filename_field',
+                  :url => { :action => :parse_filename, :only_path => false }, 
+                  :with => "'filename=' + encodedURIComponent(value)" %>
+<%= form_tag(elizees_path, :multipart => true, :method => :post) %>
+  <%= hidden_field_tag :user_id, get_user.id %>
+  <p>
+    <b>Image file</b><br />
+    <%= file_field_tag :file_upload, :size => 50 %>
+  </p>
+  <p>
+    <b>Name to save it as</b><br />
+    <span id="filename_field">
+    <%= render :partial => "file_name_field", :locals => { :name => @elizee.file } %>
+    </span>
+  </p>
+  <p>
+    <%= submit_tag "Create" %>
+  </p>
+<%= end_form_tag %>
+
+<div id="back">
+  <%= link_to 'Back', elizees_path %>
+</div>

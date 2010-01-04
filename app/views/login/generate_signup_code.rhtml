@@ -1,0 +1,20 @@
+<div class="generic-form">
+  <%= error_messages_for 'signup_code' %>
+  <fieldset>
+    <legend>A new signup code!</legend>
+    <% form_for :signup_code do |form| %>
+      <p>
+        <label for="signup_code_code">Signup code:</label>
+        <span class=""><strong><%= @signup_code.code %></strong></span>
+        <%= form.hidden_field :code %>
+      </p>
+      <p>
+        <label for="signup_code_email">Email:</label>
+        <%= form.text_field :email, :size => 40 %>
+      </p>
+
+      <%= submit_tag 'Send code!', :class => 'submit' %>
+    <% end %>
+  </fieldset>
+</div>
+

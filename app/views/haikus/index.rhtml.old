@@ -1,0 +1,12 @@
+<% session[:page_number] = params[:page] || session[:page_number] %>
+<% if session[:page_number] %>
+<div id="page-number">Page <%= session[:page_number] %></div>
+<% end %>
+<br class="clear" />
+<br />
+
+<% @haikus.each { |haiku| %>
+<%= render :partial => 'haiku', :object => haiku %>
+<br class="clear" />
+<br class="clear" />
+<% } %>

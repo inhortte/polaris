@@ -1,0 +1,91 @@
+<html>
+<head>
+  <title>Fucksheep Photoalbums</title>
+  <%= stylesheet_link_tag 'blog' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+
+  <div id="banner">
+    <%= link_to image_tag(get_banner), :action => 'index' %>
+  </div>
+  <div id="sheep">
+
+  </div>
+  </div>
+  <div class="clear"></div>
+
+  <div id="maincontent">
+    <div id="leftcontent">
+      <%= render :partial => 'out_links' %>
+
+      <hr class="clear" />
+ 
+      <div id="login">
+      <% if get_user %>
+        Welcome, <strong><%= get_user.login %></strong>!
+      <% else %>
+        You don't seem to be logged in!
+      <% end %>
+      </div>
+
+      <hr class="clear" />
+
+      <% if is_admin? || at_root? || own_parent? %>
+        <div class="new-photoalbum">
+	  <%= link_to 'Add Photo', new_photo_path(session[:pa_parent]) %>
+        </div>
+	<br class="clear" />
+        <div class="new-photoalbum">
+	  <%= link_to 'New Photoalbum', new_photoalbum_path %>
+        </div>
+	<br class="clear" />
+        <div class="elizee-link">
+          <%= link_to '(manage images)', elizees_path %>
+        </div>
+        <br class="clear" />
+      <% end %>
+
+      <% unless session[:pa_parent].nil? || get_parent(session[:pa_parent]).nil? %>
+        <div class="up">
+          <%= link_to 'up', photoalbum_path(get_parent(session[:pa_parent])) %>
+        </div>
+        <br class="clear" />
+        <hr class="clear" />
+      <% end %>
+
+      <% photoalbums = get_photoalbums
+         unless photoalbums.length == 0 %>
+      <div class="photoalbum-list-head">
+        <%= parent_name %>
+      </div>
+      <% get_photoalbums.each { |pa| %>
+      <div id="pa<%= pa.id %>" class="clear">
+        <div class="pa-name">
+          <%= link_to pa.name, photoalbum_path(pa.id) %>
+        </div>
+        <div class="pa-edit-delete">
+          <% if is_admin? || own_pa?(pa) %>
+            <%= link_to 'E', edit_photoalbum_path(pa)  %>
+            <%= link_to 'D', photoalbum_path(pa), :confirm => 'You sure?', :method => :delete %>
+          <% end %>
+        </div>
+      </div>
+      <% }
+        end %>
+    </div>
+
+    <div id="rightcontent">
+      <%= render :partial => 'top_links' %>
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <%= image_tag 'hump.gif', :id => 'spinner', :style=>"display:none; float:right;" %>
+      <%= yield  %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>

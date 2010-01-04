@@ -1,0 +1,21 @@
+<%= error_messages_for :haiku %>
+
+<p>
+  <b>User</b><br />
+  <%= get_user.login %>
+</p>
+<% form_for(:haiku, :url => haikus_path) do |f| %>
+  <%= f.hidden_field :user_id, :value => get_user.id %>
+  <p>
+    <b>Haiku</b><br />
+    <%= f.text_area :haiku, :cols => 40, :rows => 4 %>
+  </p>
+
+  <p>
+    <%= submit_tag "Create" %>
+  </p>
+<% end %>
+
+<div id="back">
+  <%= link_to 'Back', haikus_path %>
+</div>

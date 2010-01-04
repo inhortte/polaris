@@ -1,0 +1,43 @@
+%html{html_attrs(lang = 'en-UK')}
+  %head
+    %title
+      The fucksheep.org Haiku Collection
+    = stylesheet_link_tag 'haikus'    
+    = javascript_include_tag :defaults
+
+  %body
+    #banner
+      = link_to image_tag(get_banner), :action => 'index'
+      #sheep
+    .clear/
+
+    #maincontent
+      #leftcontent
+        #login
+          - if get_user
+            Welcome,
+            %strong<
+              = get_user.login
+            \!            
+          - else            
+            You don't seem to be logged in!
+
+        %hr.clear/
+                  
+        #login-menu       
+          %a{:href => '/blog'}
+            Blog
+          %br/
+          %a{:href => '/login'}
+            Admin
+          %br/          
+          = link_to 'Photoalbum', photoalbums_path
+
+      #rightcontent
+        = render :partial => 'top_links'
+        - if flash[:notice]
+          %p#notice
+            = flash[:notice]
+        = yield
+      
+      .clear/

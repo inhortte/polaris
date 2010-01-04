@@ -1,0 +1,17 @@
+<h1>Editing leper</h1>
+
+<%= error_messages_for :leper %>
+
+<% form_for(:leper, :url => leper_path(@leper), :html => { :method => :put }) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', leper_path(@leper) %> |
+<%= link_to 'Back', lepers_path %>

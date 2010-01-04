@@ -1,0 +1,12 @@
+<div id="top-links">
+  <ul>
+  <% unless @elizee_pages.nil? %>
+    <% if @elizee_pages.current.previous %>
+      <li><%= link_to 'previous', :page => @elizee_pages.current.previous %></li>
+    <% end %>
+    <% if @elizee_pages.current.next %>
+      <li><%= link_to 'next', :page => @elizee_pages.current.next %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

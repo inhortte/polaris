@@ -1,0 +1,7 @@
+<% @photos.each { |photo| %>
+<div id="photo<%= pa.id %>">
+  <div class="photo-thumbnail">
+    <%= link_to photo.title, photo_path(photo.id) %>
+  </div>
+</div>
+<% } %>

@@ -1,0 +1,59 @@
+<div id="entry<%= @entry.id %>">
+  <div class="entry-content">
+    <div class="date"><%= format_date(@entry.created_at) %></div>
+    <div class="user">by 
+      <%= link_to get_user(@entry.user_id).login,
+                  :action => :user, :id => @entry.user_id %>
+    </div>
+    <div class="topic">
+      <%= pluralize(@entry.topics.length, 'Topic').gsub(/\d+\s+/,'') %>:
+      <%= @entry.topics.empty? ? 'none' : entry_topics(@entry.topics) %>
+    </div>
+    <div class="subject">
+      <%= h(@entry.subject) %>
+    </div>
+    <div class="entry">
+      <%= paragraphify(@entry.entry) %>
+    </div>
+    <div class="mood">Mood: <%= get_mood(@entry.mood_id).mood %></div>
+    <div class="music">Music: <%= @entry.music %></div>
+  </div>
+  <div class="entry-actions">
+    <% if is_admin? || is_current_user?(@entry.user_id) %>
+      <%= button_to 'delete', { :action => 'destroy', :id => @entry },
+                              :confirm => 'Really?' %>
+      <%= button_to 'edit', :action => 'edit', :id => @entry %>
+    <% end %>
+  </div>
+  <hr class="clear" />
+  <div class="title">
+    <%= link_to_remote 'Comments...',
+                       :url => { :action => :toggle_new_comment } %>
+  </div>
+  <%= invisible_div(!session[:show_new_comment], :id => 'add_comment') %>
+    <div class="title">New comment?</div>
+    <br class="clear" />
+    <% form_for :comment, @comment, :url => { :action => :create_comment } do |c| %>
+      <%= c.hidden_field :entry_id, :value => @entry.id %>
+      <%= c.hidden_field :user_id, :value => get_user.id %>      
+      <label for="subject">Subject:</label> <%= c.text_field :subject, :width => "30" %>
+      <br class="clear" />
+      <label for="comment">Comment:</label> <%= c.text_area :comment, :rows => 5, :cols => "40" %>
+      <br class="clear" />
+      <%= submit_tag "Oouh!", :width => "10" %>
+    <% end %>
+  </div>
+  <div id="comments">
+    <% if @comments.size == 0 %>
+     <div class="title">None!</div>
+    <% end %>
+    <br class="clear" />
+    <% @comments.each { |comment|
+         comment.depth = 0 %>
+      <%= render(:partial => 'comment', :object => comment) %>
+      <br class="clear" />
+      <br class="clear" />
+    <% } %>
+    <br class="clear" />
+  </div>
+</div>

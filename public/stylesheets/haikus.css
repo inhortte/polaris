@@ -1,0 +1,114 @@
+body {
+  background-color: #4050a0;
+  color: #333333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+a {
+  text-decoration: none; }
+
+#maincontent {
+  background-color: #7777cc;
+  width: 800px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  border: 1px solid #fff; }
+
+#leftcontent {
+  float: left;
+  width: 20%;
+  padding: 10px 10px 10px 10px; }
+  #leftcontent a {
+    color: #00b; }
+    #leftcontent a:hover {
+      text-decoration: underline; }
+
+#rightcontent {
+  background-color: #c6c6c6;
+  float: right;
+  width: 75%;
+  padding: 10px 10px 0px 10px; }
+  #rightcontent a {
+    color: #00b; }
+
+#banner {
+  float: left; }
+
+#sheep {
+  float: right; }
+
+img {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+#top-links {
+  font-size: smaller;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #fff; }
+  #top-links ul {
+    padding: 0;
+    margin: 0; }
+  #top-links li {
+    font-size: smaller;
+    display: inline;
+    text-align: center;
+    padding: 0px 40px 0px 40px; }
+
+#bottom-links {
+  padding: 5px 0 5px 0;
+  border-top: 1px solid #fff; }
+  #bottom-links font {
+    size: smaller; }
+  #bottom-links ul {
+    padding: 0;
+    margin: 0; }
+  #bottom-links li {
+    font-size: smaller;
+    display: inline;
+    text-align: center;
+    padding: 0px 40px 0px 40px; }
+
+#notice {
+  color: #090;
+  font-weight: bold; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
+
+.clear {
+  clear: both; }
+
+#page-number {
+  float: right;
+  font-size: 10px;
+  font-weight: bold;
+  font-color: #00b; }
+
+.haiku-header {
+  width: 75%;
+  float: left; }
+  .haiku-header .date, .haiku-header .user {
+    display: inline;
+    font-size: smaller;
+    color: #00b;
+    font-style: italic;
+    padding-left: 15px; }
+
+.haiku-actions {
+  display: inline;
+  font-size: smaller;
+  font-weight: bold;
+  padding: 8px 5px 0 15px; }
+  .haiku-actions .acceptable {
+    color: #00b000; }
+  .haiku-actions .not-acceptable {
+    color: #b00000; }

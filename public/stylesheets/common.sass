@@ -1,0 +1,107 @@
+// Standard properites
+!bodycolor = #4050a0
+!textcolor = #333
+!maincolor = #77c
+!rightcolor = #c6c6c6
+
+body
+  :background-color = !bodycolor
+  :color = !textcolor
+
+body, p, ol, ul, td
+  :font
+    :family verdana, arial, helvetica, sans-serif
+    :size 13px
+  :line-height 18px
+
+a
+  :text-decoration none
+
+#maincontent
+  :background-color = !maincolor
+  :width 800px
+  :margin
+    :top 0px
+    :right auto
+    :left auto
+  :text-align left
+  :border 1px solid #fff
+
+#leftcontent
+  :float left
+  :width 20%
+  :padding 10px 10px 10px 10px
+  a
+    :color #00b
+    &:hover
+      :text-decoration underline
+
+#rightcontent
+  :background-color = !rightcolor
+  :float right
+  :width 75%
+  :padding 10px 10px 0px 10px
+  a
+    :color #00b
+
+#banner
+  :float left
+
+#sheep
+  :float right
+
+img
+  :border 0
+  :margin 0
+  :padding 0
+
+=ulist
+  ul
+    :padding 0
+    :margin 0
+
+=litem
+  li
+    :font-size smaller
+    :display inline
+    :text-align center
+    :padding 0px 40px 0px 40px
+
+#top-links
+  :font
+    :size smaller
+  :padding-bottom 5px
+  :border
+    :bottom 1px solid #fff
+  +ulist
+  +litem
+
+#bottom-links
+  font
+    :size smaller
+  :padding 5px 0 5px 0
+  :border
+    :top 1px solid #fff
+  +ulist
+  +litem
+
+#notice
+  :color #090
+  :font
+    :weight bold
+
+.float-right
+  :float right
+
+.float-left
+  :float left
+
+.clear
+  :clear both
+
+#page-number
+  :float right
+  :font
+    :size 10px
+    :weight bold
+    :color #00b

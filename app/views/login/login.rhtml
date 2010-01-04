@@ -1,0 +1,18 @@
+<div class="generic-form">
+  <fieldset>
+    <legend><%= get_legend %></legend>
+    <%= form_tag :action => :login, :method => :post %>
+      <p>
+        <label for="login">Login:</label>
+        <%= text_field_tag :login, params[:login], :size => 40 %>
+      </p>
+      <p>
+        <label for="passwd">Password:</label>
+        <%= password_field_tag :passwd, params[:passwd], :size => 40 %>
+      </p>
+
+      <%= submit_tag 'Oouh!', :class => 'submit' %>
+    <%= end_form_tag %>
+  </fieldset>
+</div>
+

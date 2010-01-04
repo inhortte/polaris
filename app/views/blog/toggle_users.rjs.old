@@ -1,0 +1,5 @@
+if session[:show_users]
+  page[:users].visual_effect :blind_down
+else
+  page[:users].visual_effect :blind_up
+end

@@ -1,0 +1,26 @@
+<div id="top-links">
+  <ul>
+  <% topic = get_topic
+     unless topic.nil? %>
+    <li>Topic: <strong><%= topic.topic %></strong>
+        (<%= link_to 'clear', :action => 'topic', :id => nil %>)</li>
+  <% end %>
+  <% user = get_shown_user
+     unless user.nil? %>
+    <li>User: <strong><%= user.login %></strong>
+        (<%= link_to 'clear', :action => 'user', :id => nil %>)</li>
+  <% end %>
+  <% if get_user %>
+    <li><%= link_to 'New', :action => 'new' %></li>
+  <% end %>
+    <li><%= link_to 'Recent', :action => 'list' %></li>
+  <% unless @entry_pages.nil? %>
+    <% if @entry_pages.current.previous %>
+      <li><%= link_to 'previous', :page => @entry_pages.current.previous %></li>
+    <% end %>
+    <% if @entry_pages.current.next %>
+      <li><%= link_to 'next', :page => @entry_pages.current.next %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

@@ -1,0 +1,19 @@
+<%= form_tag :controller => 'login',:action => :login, :method => :post %>
+
+<div title="Account login" id="sidebar-login">
+  <p>
+    <label for="login">Login:</label>
+    <%= text_field_tag :login, params[:login],
+                       :size => 15, :class => 'text-input' %>
+    <br />
+    <label for="passwd">Password:</label>
+    <%= password_field_tag :passwd, params[:passwd],
+                           :size => 15, :class => 'text-input' %>
+    <br />
+    <%= hidden_field_tag :from_where, 'blog' %>
+    <%= submit_tag 'Oouh!', :class => 'button' %>
+  </p>
+</div>
+
+<%= end_form_tag %>
+

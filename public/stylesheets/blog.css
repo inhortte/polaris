@@ -1,0 +1,555 @@
+body { 
+  background-color: #4050a0;
+  color: #333; 
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#maincontent { 
+  background-color: #77c;
+  width: 800px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: left;
+  border: 1px solid #fff;
+}
+
+#leftcontent { 
+  float: left;
+  width: 20%;
+  padding: 10px 10px 10px 10px;
+}
+
+#leftcontent a {
+  color: #00b;
+}
+
+#leftcontent .calendar a { 
+  color: #fff;
+}
+
+#leftcontent a:hover {
+  text-decoration: underline;
+}
+
+#rightcontent { 
+  background-color: #c6c6c6;
+  float: right;
+  width: 75%;
+  padding: 10px 10px 0px 10px;
+}
+
+#rightcontent a {
+  color: #00b; 
+  text-decoration: none;
+}
+
+#banner {
+  float: left;
+}
+
+#sheep {
+  float: right;
+}
+
+#oblique-strategy { 
+  font-size: smaller;
+  color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 5px 5px 5px;
+}
+
+#oblique-strategy .strategy { 
+  display: block;
+}
+
+#oblique-strategy a { 
+  color: #888;
+}
+
+#login { 
+
+}
+
+img {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#top-links {
+  font-size: smaller;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #fff;
+}
+
+#bottom-links {
+  font-size: smaller;
+  padding: 5px 0 5px 0;
+  border-top: 1px solid #fff;
+}
+
+#top-links ul, #bottom-links ul {
+  padding: 0;
+  margin: 0;
+}
+
+#top-links li, #bottom-links li {
+  font-size: smaller;
+  display: inline;
+  text-align: center;
+  padding: 0px 40px 0px 40px;
+}
+
+#notice {
+  color: #090;
+  font-weight: bold;
+}
+
+#topics-link, #users-link, #calendar-link {
+  color: #fff;
+  font-weight: bold;
+  padding-bottom: 3px;
+}
+
+#list-header {
+  float: left;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  padding-top: 10px;
+}
+
+#page-number {
+  float: right;
+  font-size: 10px;
+  font-weight: bold;
+  color: #00b;
+}
+
+.title { 
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.entry-content {
+  width: 85%;
+  float: left;
+}
+
+.entry-content .date, .entry-content .user,
+.comment-content .date, .comment-content .user {
+  display: inline;
+  font-size: smaller;
+  color: #00b;
+  font-style: italic;
+  padding-left: 20px;
+}
+
+.entry-content .topic, .entry-content .mood, .entry-content .music {
+  display: inline;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.entry-content .subject {
+  font-weight: bold;
+}
+
+.entry-content .subject .comments {
+  font-size: smaller;
+  font-style: italic;
+}
+
+.entry-content .entry {
+}
+
+.entry-actions, .comment-actions {
+  float: right;
+  width: 10%;
+  font-size: smaller;
+  padding: 8px 5px 0 5px;
+}
+
+.comment-content { 
+  width: 85%;
+  float: left;
+}
+
+.comment-content .subject {
+  font-weight: bold;
+}
+
+.submit-link, .button-to input {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: smaller;
+  color: #00b;
+  background-color: #c6c6c6;
+  cursor: pointer;
+}
+
+#add_comment label { 
+  float: left;
+  text-align: right;
+  width: 120px;
+  margin-right: 10px;
+}
+
+#add_comment input, #add-comment textarea { 
+  float: left;
+}
+
+.button-to div {
+  display: inline;
+}
+
+.generic-form fieldset {
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 15px 10px;
+  border: 1px solid #fff;
+}
+
+.generic-form label {
+  float: left;
+  text-align: right;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.generic-form legend {
+  border: 1px solid #fff;
+}
+
+.generic-form .submit {
+  float: right;
+  display: block;
+}
+
+#sidebar-login label {
+  font-size: smaller;
+  font-weight: bold;
+}
+
+#sidebar-login .text-input { 
+  border: 1px solid #00b;
+  padding: 2px;
+  font-size: 10px;
+  background-color: #bbb;
+  color: #000;
+}
+
+#sidebar-login .button { 
+  border: 1px solid #00b;
+  margin-top: 5px;
+  padding: 2px;
+  font-size: 10px;
+  background-color: #bbb;
+  color: #000;
+}
+
+#out-links {
+  font-size: 9px;
+  font-weight: bold;
+}
+
+.float-right { 
+  float: right;
+}
+
+.float-left { 
+  float: left;
+}
+
+.list-light { 
+  background-color: #ccc;
+}
+
+.list-dark { 
+  background-color: #aaa;
+}
+
+#user_list { 
+  border: 1px solid #fff;
+  margin: 5px 10px 10px 10px;
+}
+
+#user_list ul { 
+  margin: 0;
+  padding: 0;
+}
+
+#user_list li { 
+  display: block;
+  padding: 5px 10px 5px 10px;
+  margin: 0;
+}
+
+.small-blue {
+  font-size: smaller;
+  color: #00b;
+}
+
+
+
+
+.category-box { 
+  float: left;
+  width: 29%;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
+  border: 1px solid #00f;
+}
+
+.category { 
+  font-style: italic;
+  font-weight: bold;
+  border-bottom: 1px solid #00f;
+}
+
+.subcategory { 
+  padding-left: 5px;
+}
+
+.clear { 
+  clear: both;
+}
+
+.message { 
+  color: #f00;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a:hover { 
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+h1 { 
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+h3 { 
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#category-list {  
+  border: 2px solid #fff;
+  padding: 7px;
+}
+
+td,th { 
+  padding: 3px;
+}
+
+th {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.green { 
+  color: #0f0;
+}
+
+#back { 
+  color: #00b;
+  font-size: smaller;
+  padding-bottom: 5px;
+}
+
+// haiku stuff
+
+.haiku-header {
+  width: 60%;
+  float: left;
+}
+
+.haiku-header .date, .haiku-header .user {
+  display: inline;
+  font-size: smaller;
+  color: #00b;
+  font-style: italic;
+  padding-left: 20px;
+}
+
+.haiku {
+}
+
+.haiku-actions {
+  display: inline;
+  font-size: smaller;
+  font-weight: bold;
+  padding: 8px 5px 0 50px;
+}
+
+.haiku-actions .acceptable {
+  color: #00b000;
+}
+
+.haiku-actions .not-acceptable {
+  color: #b00000;
+}
+
+.new-photoalbum, .up, .elizee-link { 
+  float: right;
+  font-size: smaller;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.elizee-link {
+  font-size: tiny;
+}
+
+
+.pa-name { 
+  float: left;
+}
+
+.pa-edit-delete {
+  font-weight: bold;
+  font-size: smaller;
+  float: right;
+}
+
+.photo-title {
+  font-size: smaller;
+}
+
+.photo-edit-delete {
+  font-weight: bold;
+  font-size: smaller;
+  float: left;
+  padding-left: 5px;
+}
+
+.photo-entry {
+  float: left;
+  padding: 10px 30px 10px 10px;
+}
+
+.photo-thumbnail {
+  display: inline;
+  float: left;
+}
+
+.photoalbum-list-head {
+  color: #b00;
+  font-size: smaller;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.photo-radio-button {
+  color: #b00;
+  font-size: smaller;
+}
+
+.photo-description {
+  color: #ccc;
+  font-size: smaller;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #0f0;
+}
+
+.web-photo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-bottom: 1px solid #000;
+  margin: 0;
+  padding: 0;
+}
+
+.photo-hover {
+  border: 1px solid #000;
+}
+
+.elizee-entry {
+  font-size: smaller;
+  margin: 0px 40px 20px 0px;
+  float: left;
+}
+
+.elizee-entry .elizee-thumb {
+  float: left;
+}
+
+.elizee-entry .info {
+  float: left;
+  padding: 0px 0px 0px 20px;
+}

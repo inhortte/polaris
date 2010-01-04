@@ -1,0 +1,33 @@
+<%= error_messages_for 'entry' %>
+
+<!--[form:entry]-->
+<p><label for="entry_subject">The subject...</label><br/>
+<%= text_field 'entry', 'subject', :size => 60 %></p>
+
+<p><label for="entry_entry">Your entry...</label><br/>
+<%= text_area 'entry', 'entry', :rows => 20, :cols => 60 %></p>
+
+<p>
+  <label for="entry_topic">Choose or enter a topic...</label><br/>
+  <%= select_tag 'topic_id',
+             options_for_select(get_topics_for_select),
+	     :include_blank => true %>
+  <label for="new_topic"> - </label>
+  <%= text_field_tag 'new_topic', 
+        @entry.topics.collect { |topic| topic.topic }.join(','),
+        :size => 30 %>
+</p>
+
+<p>
+  <label for="entry_mood">Your mood?</label><br/>
+  <%= select 'entry', 'mood_id', 
+             get_moods_for_select %>
+  <label for="new_mood">Or an unlisted mood?</label>
+  <%= text_field_tag 'new_mood', '', :size => 30 %>
+</p>
+
+<p><label for="entry_music">What are you listening to?</label><br/>
+<%= text_field 'entry', 'music', :size => 60 %></p>
+
+<!--[eoform:entry]-->
+

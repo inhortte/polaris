@@ -1,0 +1,22 @@
+%h1
+  Editing haiku
+
+= error_messages_for :haiku
+
+%p
+  %strong User
+  %br/
+  = surround '__' do
+    = get_user.login
+
+- form_for(:haiku, :url => haiku_path(@haiku), :html => { :method => :put }) do |f|
+  = f.hidden_field :user_id, :value => get_user.id
+  %p
+    %strong Haiku
+    %br/
+    = f.text_area :haiku
+
+  %p
+    = submit_tag "Update"
+
+= link_to 'Back', haikus_path

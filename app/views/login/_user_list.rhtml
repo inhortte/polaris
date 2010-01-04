@@ -1,0 +1,23 @@
+<div id="user_list">
+  <ul>
+  <% @users.each do |user| %>
+    <li class="<%= cycle('list-light', 'list-dark') %>">
+      <span class="float-left">
+        <%= user.login %>
+        <%= user.name.nil? ? '' : (' - ' + user.name) %>
+        <%= user.email.nil? ? '' : (' - ' + user.email) %>
+      </span>
+      <span class="float-right">
+        edit
+        <% if session[:user_id] != user.id %>
+        | <%= link_to_remote 'delete', :confirm => 'Sure?',
+                             :method => :post,
+                             :url => { :action => :delete_user,
+                                       :id => user.id } %>
+        <% end %>
+      </span>
+      <br class="clear" />
+    </li>
+  <% end %>
+  </ul>
+</div>

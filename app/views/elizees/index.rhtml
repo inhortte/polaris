@@ -1,0 +1,16 @@
+<% session[:page_number] = params[:page] || session[:page_number] %>
+<% if session[:page_number] %>
+<div id="page-number">Page <%= session[:page_number] %></div>
+<br class="clear" />
+<% end %>
+<br />
+
+<% if @elizees.length == 0 %>
+  <div id="no-photos">
+    No images are available, vole.
+  </div>
+<% else %>
+  <div id="elizee_list">
+    <%= render :partial => 'elizees' %>
+  </div>
+<% end %>

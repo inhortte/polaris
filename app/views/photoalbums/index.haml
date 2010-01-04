@@ -1,0 +1,7 @@
+- if @photos.length == 0
+  #no-photos
+    There are no photos in this album.
+- else
+  #photo_list
+    = render :partial => 'photos'
+  = sortable_element 'photo_list', :url => rearrange_photoalbum_url(session[:pa_parent]), :constraint => false, :ghosting => true, :tag => 'span'

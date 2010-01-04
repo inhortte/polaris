@@ -1,0 +1,22 @@
+<h1>Editing haiku</h1>
+
+<%= error_messages_for :haiku %>
+
+<p>
+  <b>User</b><br />
+  <%= get_user.login %>
+</p>
+<% form_for(:haiku, :url => haiku_path(@haiku), :html => { :method => :put }) do |f| %>
+  <%= f.hidden_field :user_id, :value => get_user.id %>
+  <p>
+    <b>Haiku</b><br />
+    <%= f.text_area :haiku %>
+  </p>
+
+  <p>
+    <%= submit_tag "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', haiku_path(@haiku) %> |
+<%= link_to 'Back', haikus_path %>

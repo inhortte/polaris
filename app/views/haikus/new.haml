@@ -1,0 +1,31 @@
+- if params[:id]
+  - surround_str = '__'
+  - path = haiku_path(@haiku)
+  - options = { :method => :put }
+  %h1
+    Editing Haiku
+- else
+  - surround_str = '*'
+  - path = haikus_path
+  - options = { }
+
+= error_messages_for :haiku
+
+%p
+  %strong User
+  %br/
+  = surround surround_str do
+    = get_user.login
+
+- form_for(:haiku, :url => path, :html => options) do |f|
+  = f.hidden_field :user_id, :value => get_user.id
+  %p
+    %strong Haiku
+    %br/
+    = f.text_area :haiku, :cols => 40, :rows => 4
+
+  %p
+    = submit_tag (params[:id] ? "Update" : "Create")
+
+#back
+  = link_to 'Back', haikus_path

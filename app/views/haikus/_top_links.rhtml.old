@@ -1,0 +1,14 @@
+<div id="top-links">
+  <ul>
+    <li><%= link_to 'New Haiku', new_haiku_path %></li>
+    <li><%= link_to 'Recent', haikus_path %></li>
+  <% unless @haiku_pages.nil? %>
+    <% if @haiku_pages.current.previous %>
+      <li><%= link_to 'previous', :page => @haiku_pages.current.previous %></li>
+    <% end %>
+    <% if @haiku_pages.current.next %>
+      <li><%= link_to 'next', :page => @haiku_pages.current.next %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>

@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title><%= @photo.title %></title>
+  <%= stylesheet_link_tag 'blog' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body style="background-color: #888;">
+<div>
+  <%= image_tag 'photos/web_photos/' + @photo.elizee.file, :class => 'web-photo' %>
+</div>
+<div style="position: absolute; top: <%= (@photo.elizee.height_web + 5).to_s %>px; left: 15px;">
+<p class="photo-description">
+  <%= @photo.description %>
+</p>
+<p class="download-photo-link">
+  <%= link_to 'download', download_photo_path(@photo.photoalbum_id, @photo.id) %>
+</p>
+</div>
+</body>
+</html>

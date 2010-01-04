@@ -1,0 +1,37 @@
+<% @elizees.each_index { |i| %>
+  <a anchor="elizee_<%= @elizees[i].id %>"></a>
+  <div id="elizee_<%= @elizees[i].id %>" class="elizee-entry">
+    <div class="elizee-thumb">
+      <%= image_tag 'photos/thumbnails/' + @elizees[i].file %><br />
+      <%= @elizees[i].file %><br />
+      <% unless @elizees[i].photo_id.nil? %>
+        <em><%= @elizees[i].photo.title %></em><br />
+        in <%= link_to @elizees[i].photo.photoalbum.name, photoalbum_path(@elizees[i].photo.photoalbum_id) %>
+      <% else %>
+        &nbsp;<br />
+      <% end %>
+    </div>
+    <div class="info">
+      <div class="owner">
+        Owner: <%= get_user(@elizees[i].user_id).login %>
+      </div>
+      <div class="dimensions">
+        Image: <%= @elizees[i].width.to_s + 'x' + @elizees[i].height.to_s %><br />
+        Web: <%= @elizees[i].width_web.to_s + 'x' + @elizees[i].height_web.to_s %><br />
+        Thumb: <%= @elizees[i].width_thumb.to_s + 'x' + @elizees[i].height_thumb.to_s %>
+      </div>
+      <% if @elizees[i].user_id == session[:user_id] %>
+      <div class="controls">
+        <%= link_to 'Delete', elizee_path(@elizees[i].id),
+                    :confirm => 'You sure?', :method => :delete %> |
+        <%= link_to 'Edit', elizee_path(@elizees[i].id) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+    <% # Ha ha.
+       if (i + 1) % 2 == 0 %>
+      <br class="clear" />
+    <% end %>
+<% } %>

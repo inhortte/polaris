@@ -1,0 +1,54 @@
+<div id="comment<%= comment.id %>" style="padding-left: <%= comment.depth * Comment.depth_spacing %>px">
+  <div class="comment-content">
+    <div class="date"><%= format_date(comment.created_at) %></div>
+    <div class="user">by <%= get_user(comment.user_id).login %></div>
+    <div class="subject"><%= h(comment.subject) %></div>
+    <div class="comment"><%= paragraphify(comment.comment) %></div>
+
+    <% if session[:shown_reply_to_comment].include? comment.id %>
+    <div id="comment_on_comment<%= comment.id %>">
+      <% form_for :comment, @comment, :url => { :action => :create_comment } do |c| %>
+        <%= c.hidden_field :entry_id, :value => comment.entry_id %>
+        <%= c.hidden_field :user_id, :value => get_user.id %>      
+	<%= c.hidden_field :parent_id, :value => comment.id %>
+        <label for="subject">Subject:</label>
+        <%= c.text_field :subject, :value => '', :width => "30" %>
+        <br class="clear" />
+        <label for="comment">Comment:</label>
+        <%= c.text_area :comment, :value => '', :rows => 5, :cols => "40" %>
+        <br class="clear" />
+        <%= submit_tag "Oouh!", :width => "10" %>
+      <% end %>
+    </div>
+    <% end %>
+
+  </div>
+  <div class="comment-actions">
+    <% if is_admin? || is_current_user?(comment.user_id) %>
+      <%= button_to 'delete', { :action => 'destroy_comment', :id => comment },
+                              :confirm => 'Really?' %>
+    <% end %>
+    <% if get_user
+         if session[:shown_reply_to_comment].include? comment.id
+           thing = 'collapse'
+	   action = 'uncomment_on_comment'
+         else
+           thing = 'reply'
+	   action = 'comment_on_comment'
+         end %>
+      <span class="button-to">
+        <%= link_to_remote thing,
+	                   :url => { :action => action,
+                                     :id => comment,
+                                     :depth => comment.depth } %>
+      </span>
+    <% end %>
+  </div>
+
+  <% comment.children.each { |kid|
+       kid.depth = comment.depth + 1 %>
+    <%= render(:partial => 'comment', :object => kid) %>
+  <% } %>
+
+</div>
+

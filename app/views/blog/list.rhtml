@@ -1,0 +1,28 @@
+<!--<div id="list-header"></div>-->
+<% session[:page_number] = params[:page] || session[:page_number] %>
+<% if session[:page_number] %>
+<div id="page-number">Page <%= session[:page_number] %></div>
+<% end %>
+<br class="clear" />
+<br />
+
+<% @entries.each { |entry| %>
+<%= render(:partial => 'entry', :object => entry) %>
+<br class="clear" />
+<br class="clear" />
+<% } %>
+
+<div id="bottom-links">
+  <ul>
+  <% if get_user %>
+    <li><%= link_to 'New', :action => 'new' %></li>
+  <% end %>
+    <li><%= link_to 'Recent', :action => 'list' %></li>
+  <% if @entry_pages.current.previous %>
+    <li><%= link_to 'previous', :page => @entry_pages.current.previous %></li>
+  <% end %>
+  <% if @entry_pages.current.next %>
+    <li><%= link_to 'next', :page => @entry_pages.current.next %></li>
+  <% end %>
+  </ul>
+</div>

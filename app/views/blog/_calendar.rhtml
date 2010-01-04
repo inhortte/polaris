@@ -1,0 +1,11 @@
+<%= entry_days = get_current_calendar
+    calendar(:year => session[:cal_time].year,
+             :month => session[:cal_time].month,
+             :abbrev => (0...1),
+             :first_day_of_week => 1) { |d|
+      if entry_days.include?(d.mday)
+        [ d.mday, { :class => 'specialDay' } ]
+      else
+        [ d.mday, { :class => 'day' } ]
+      end
+    } %>

@@ -1,0 +1,41 @@
+<%= error_messages_for :photo %>
+
+<p>
+  <b>User</b><br />
+  <%= get_user.login %>
+</p>
+<% if @elizees.length > 0 %>
+<% form_for(:photo, :url => photos_path(session[:pa_parent])) do |f| %>
+  <%= f.hidden_field :user_id, :value => get_user.id %>
+  <%= f.hidden_field :photoalbum_id, :value => session[:pa_parent] %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title, :size => 20 %>
+  </p>
+  <p>
+    <b>Description</b><br />
+    <%= f.text_area :description, :cols => 40, :rows => 5 %>
+  </p>
+  <p>
+    <b>Available photos</b><br />
+    <% @elizees.each_index { |i| %>
+      <div class="photo-entry">
+        <%= image_tag 'photos/thumbnails/' + @elizees[i].file %><br />
+        <%= f.radio_button :elizee_id, @elizees[i].id %>
+        <span class="photo-radio-button"><%= @elizees[i].file.gsub!(/\..*$/,'') %></span>
+      </div>
+      <% if (i + 1) % 4 == 0 %>
+        <br class="clear" />
+      <% end %>
+    <% } %>
+  </p>
+  <p class="clear">
+    <%= submit_tag 'Create' %>
+  </p>
+<% end %>
+<% end %>
+
+<br class="clear" />
+<div id="back">
+  <%= link_to 'Back', photoalbum_path(session[:pa_parent]) %>
+</div>

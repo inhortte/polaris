@@ -1,0 +1,35 @@
+<div class="generic-form">
+  <%= error_messages_for 'user' %>
+  <fieldset>
+    <legend>Ooouh, baby! A new user!</legend>
+    <% form_for :user do |form| %>
+      <p>
+        <label for="user_login">Login:</label>
+        <%= form.text_field :login, :size => 40 %>
+      </p>
+      <p>
+        <label for="user_passwd">Password:</label>
+        <%= form.password_field :passwd, :size => 40 %>
+      </p>
+      <p>
+        <label for="user_password_confirmation">Confirm:</label>
+        <%= form.password_field :passwd_confirmation, :size => 40 %>
+      </p>
+      <p>
+        <label for="user_name">Name:</label>
+        <%= form.text_field :name, :size => 40 %>
+      </p>
+      <p>
+        <label for="user_email">Email:</label>
+        <%= form.text_field :email, :size => 40 %>
+      </p>
+      <p>
+        <label for="user_admin_flag">Is an admin?</label>
+        <%= select :user, :admin_flag, [ [ "No", "0" ], [ "Yes", "1" ] ] %>
+      </p>
+
+      <%= submit_tag 'Oouh!', :class => 'submit' %>
+    <% end %>
+  </fieldset>
+</div>
+

@@ -1,0 +1,83 @@
+<html>
+<head>
+  <title>The fucksheep.org blog</title>
+  <%= stylesheet_link_tag 'blog' %>
+  <%= stylesheet_link_tag 'calendar/cal_style' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+
+  <div id="banner">
+    <%= link_to image_tag(get_banner), :action => 'index' %>
+  </div>
+  <div id="sheep">
+    <%= render :partial => 'oblique_strategy' %>
+  </div>
+  </div>
+  <div class="clear"></div>
+
+  <div id="maincontent">
+    <div id="leftcontent">
+      <%= render :partial => 'out_links' %>    
+    
+      <hr class="clear" />
+
+      <div id="login">
+      <% if get_user %>
+        <%= render :partial => 'logged_in' %>
+      <% else %>
+        <%= render :partial => 'login' %>
+      <% end %>
+      </div>
+
+      <hr class="clear" />
+
+      <div id="calendar-box">
+        <span id="calendar-link">
+          <%= link_to_remote 'Calendar...',
+                             :url => { :action => 'toggle_calendar' } %>
+        </span>
+        <%= invisible_div(!session[:show_calendar], :id => 'calendar') %>
+          <% get_current_calendar %>
+          <%= render :partial => 'calendar' %>
+        </div>
+      </div>
+
+      <hr class="clear" />
+ 
+      <div id="topic-box">
+        <span id="topics-link">
+          <%= link_to_remote 'Topics...',
+                             :url => { :action => 'toggle_topics' } %>
+        </span>
+        <%= invisible_div(!session[:show_topics], :id => 'topics') %>
+        <%= render :partial => 'topic', :collection => get_topics %>
+        </div>
+      </div>
+
+      <hr class="clear" />
+
+      <div id="user-box">
+        <span id="users-link">
+          <%= link_to_remote 'Users...',
+	                     :url => { :action => 'toggle_users' } %>
+        </span>
+        <%= invisible_div(!session[:show_users], :id => 'users') %>
+        <%= render :partial => 'user', :collection => get_users %>
+        </div>
+      </div>
+    </div>
+
+    <div id="rightcontent">
+      <%= render :partial => 'top_links' %>
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <%= yield  %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>

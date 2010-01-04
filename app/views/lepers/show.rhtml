@@ -1,0 +1,12 @@
+<p>
+  <b>User:</b>
+  <%=h get_user(@haiku.user_id).login %>
+</p>
+<p>
+  <b>Haiku:</b>
+  <%=h @haiku.haiku %>
+</p>
+
+
+<%= link_to 'Edit', edit_haiku_path(@haiku) %> |
+<%= link_to 'Back', haikus_path %>

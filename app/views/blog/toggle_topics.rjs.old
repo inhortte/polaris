@@ -1,0 +1,5 @@
+if session[:show_topics]
+  page[:topics].visual_effect :blind_down
+else
+  page[:topics].visual_effect :blind_up
+end

@@ -1,0 +1,12 @@
+<div id="top-links">
+  <ul>
+    <li>
+      <% breadcrumbs.each { |crumb| %>
+        <%= link_to crumb[0], photoalbum_url(crumb[1]) %>
+        <% unless crumb[1] == session[:pa_parent] %>
+          -&gt;
+        <% end %>
+      <% } %>
+    </li>
+  </ul>
+</div>

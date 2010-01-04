@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>The fucksheep.org blog</title>
+  <%= stylesheet_link_tag 'blog' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+
+  <div id="banner">
+    <%= link_to image_tag(get_banner), :action => 'index' %>
+  </div>
+  <div id="sheep">
+
+  </div>
+  </div>
+  <div class="clear"></div>
+
+  <div id="maincontent">
+    <div id="leftcontent">
+      <div id="login">
+      <% if get_user %>
+        Welcome, <strong><%= get_user.login %></strong>! oneuht
+      <% else %>
+        You don't seem to be logged in!
+      <% end %>
+      </div>
+
+      <hr class="clear" />
+ 
+      <div id="login-menu">
+        <a href="/blog">Blog</a><br />
+        <a href="/login">Admin</a><br />
+        <%= link_to 'Photoalbum', photoalbums_path %>
+      </div>
+    </div>
+    <div id="rightcontent">
+      <%= render :partial => 'top_links' %>
+      <% if flash[:notice] %>
+        <p id="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <%= yield  %>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>

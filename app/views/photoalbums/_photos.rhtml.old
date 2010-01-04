@@ -1,0 +1,33 @@
+  <% @photos.each_index { |i| %>
+    <span id="photo_<%= @photos[i].id %>" class="photo-entry">
+      <div class="photo-thumbnail">
+        <% unless is_admin? || own_pa?(session[:pa_parent]) %>
+          <%= link_to(image_tag('photos/thumbnails/' + @photos[i].elizee.file),
+              photo_path(session[:pa_parent],@photos[i].id),
+              :popup => [ @photos[i].title,
+                          'height=' + (@photos[i].elizee.height_web + 100).to_s + ', ' +
+                           'width=' + (@photos[i].elizee.width_web).to_s ]) %>
+        <% else %>
+          <%= image_tag('photos/thumbnails/' + @photos[i].elizee.file) %>
+        <% end %>
+      </div>
+      <% if is_admin? || own_pa?(session[:pa_parent]) %>
+        <div class="photo-edit-delete">
+          <%= link_to 'E', edit_photo_path(@photos[i].photoalbum_id,@photos[i]) %><br />
+          <%= link_to 'D', photo_path(@photos[i].photoalbum_id,@photos[i]),
+                      :confirm => 'You sure?', :method => :delete %>
+        </div>
+      <% end %>
+      <br class="clear" />
+      <div class="photo-title">
+        <%= link_to(@photos[i].title, photo_path(@photos[i].photoalbum_id,@photos[i]),
+                    :popup => [ @photos[i].title,
+                                'height=' + (@photos[i].elizee.height_web + 100).to_s + ', ' +
+                                'width=' + (@photos[i].elizee.width_web).to_s ]) %>
+      </div>
+    </span>
+    <%= draggable_element('photo_' + @photos[i].id.to_s, :ghosting => true, :revert => true) %>
+    <% if (i + 1) % 4 == 0 %>
+    <br class="clear" />
+    <% end %>
+  <% } %>

@@ -1,0 +1,21 @@
+%a{:anchor => "haiku#{haiku.id}"}/
+- haml_tag :div, {:id => 'haiku' + haiku.id.to_s} do
+  .haiku-header
+    .date
+      = format_date(haiku.created_at)
+    .user
+      by
+      = get_user(haiku.user_id).login
+    .haiku-actions
+      - if is_admin? || is_current_user?(haiku.user_id)
+        = link_to 'delete', haiku_path(haiku), :confirm => 'You sure?', :method => :delete
+        &nbsp;                  
+        = link_to 'edit', edit_haiku_path(haiku)
+        &nbsp;
+        - haml_tag :span, {:id => 'acceptable' + haiku.id.to_s} do
+          = render :partial => 'acceptable', :locals => {:haiku => haiku}
+        = surround '(', ')' do
+          = link_to_remote 'toggle', :url => toggle_haiku_url(haiku.id)
+  %br.clear/        
+  .haiku
+    = haikuify(haiku.haiku)

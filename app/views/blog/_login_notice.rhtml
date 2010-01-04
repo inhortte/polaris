@@ -1,0 +1,6 @@
+<% if session['login_notice'] %>
+<div class="message">
+  <%= session['login_notice'] %>
+</div>
+<%   session['login_notice'] = nil
+  end %>

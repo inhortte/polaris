@@ -1,0 +1,4 @@
+<div id="logged-in">
+  Hello <strong><%= get_user.login %></strong>.<br />
+  (<%= link_to 'logout',:controller => 'login',:action => :logout, :where => 'blog' %>)
+</div>
